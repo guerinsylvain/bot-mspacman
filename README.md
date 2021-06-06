@@ -5,7 +5,11 @@
 &nbsp;&nbsp;&nbsp;[Install and configure Python](#setup-python)
 &nbsp;&nbsp;&nbsp;[Install atari_py roms](#setup-atari-py-roms)
 
-<a id="get-sources"></a>
+<a id="setup"></a>
+
+### Setup
+
+<a id="setup"></a>
 
 ### Get the sources
 
