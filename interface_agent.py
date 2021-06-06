@@ -1,9 +1,8 @@
 import abc
 
-
 class IAgent(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def choose_action(self, observation):
+    def choose_action(self, observation, explore=True):
         pass
 
     @abc.abstractmethod
@@ -12,4 +11,12 @@ class IAgent(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def learn(self):
+        pass
+
+    @abc.abstractmethod
+    def loadModel(self, file_name):
+        pass
+
+    @abc.abstractmethod
+    def saveModel(self, num_episodes):
         pass

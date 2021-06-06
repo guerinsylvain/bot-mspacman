@@ -1,7 +1,6 @@
 from experience import Experience
 import random
 
-
 class ReplayMemory:
     def __init__(self, capacity):
         self.__memory = []

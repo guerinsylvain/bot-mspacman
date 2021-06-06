@@ -1,6 +1,5 @@
 import abc
 
-
 class IEnvironment(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def close(self):
@@ -20,4 +19,8 @@ class IEnvironment(metaclass=abc.ABCMeta):
 
     @property
     def num_actions(self):
+        pass
+
+    @property
+    def obs_size(self):
         pass

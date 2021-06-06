@@ -10,7 +10,7 @@ num_episodes = 10
 env = Environment()
 history = []
 # agent = AgentRandom(env.num_actions)
-agent = AgentDeepQLearningCNN(env.num_actions)
+agent = AgentDeepQLearningCNN(env.obs_size, env.num_actions)
 
 # training
 for i in range(num_episodes):
