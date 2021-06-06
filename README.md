@@ -1,13 +1,25 @@
 # bot-mspacman
 
+Trying to build the best bot to play miss pacman on atari 2600.
+
+[Results](#results)  
 [Setup](#setup)  
 &nbsp;&nbsp;&nbsp;[Get the sources](#get-sources)  
 &nbsp;&nbsp;&nbsp;[Install and configure Python](#setup-python)
 &nbsp;&nbsp;&nbsp;[Install atari_py roms](#setup-atari-py-roms)
 
+<a id="results"></a>
+
+## Results
+
+| Methods       | Average Score (50 episodes) |
+| ------------- | --------------------------- |
+| Random policy | 218                         |
+| ...           | ...                         |
+
 <a id="setup"></a>
 
-### Setup
+## Setup
 
 <a id="setup"></a>
 
