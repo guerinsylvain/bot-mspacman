@@ -20,7 +20,7 @@ for i in range(num_episodes):
             env.render()
 
         action = agent.choose_action(obs)
-        next_obs, reward, done, _ = env.step(action)
+        next_obs, reward, done = env.step(action)
         agent.gather_experience(obs, action, reward, next_obs)
         agent.learn()
 

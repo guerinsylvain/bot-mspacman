@@ -8,7 +8,6 @@ num_episodes = 50
 
 # inits
 env = Environment()
-print("actions [0-8]:", env.env.get_action_meanings())
 history = []
 agent = AgentRandom(env.num_actions)
 
@@ -22,7 +21,7 @@ for i in range(num_episodes):
             env.render()
 
         action = agent.choose_action(obs)
-        next_obs, reward, done, _ = env.step(action)
+        next_obs, reward, done = env.step(action)
         episodic_reward += reward
         obs = next_obs
 
