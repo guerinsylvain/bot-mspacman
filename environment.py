@@ -20,6 +20,7 @@ class Environment(IEnvironment):
         img = img.convert('L')
         img = img.crop((0, 1, 160, 172))
         img = img.resize((85, 80), resample=ANTIALIAS)
+        img = np.array(img) / 255
         return np.array(img)
 
     def render(self):
