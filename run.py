@@ -1,9 +1,10 @@
 import gym
 from agent_random import AgentRandom
+import numpy as np
 
 # parameters
-render_env = True
-num_episodes = 10
+render_env = False
+num_episodes = 50
 
 # inits
 env = gym.make('MsPacman-v0')
@@ -22,13 +23,11 @@ for i in range(num_episodes):
 
         action = agent.choose_action(obs)
         next_obs, reward, done, _ = env.step(action)
-        agent.gather_experience(obs, action, reward, next_obs)
-        agent.learn()
-
         episodic_reward += reward
         obs = next_obs
 
     history.append(episodic_reward)
     print("Episode number:", i, 'Episode Reward:', episodic_reward)
 
+print(np.mean(history))
 env.close()
