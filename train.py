@@ -3,8 +3,8 @@ from agent_deep_q_learning_cnn import AgentDeepQLearningCNN
 from environment import Environment
 
 # parameters
-render_env = True
-num_episodes = 10
+render_env = False
+num_episodes = 1000
 
 # inits
 env = Environment()
@@ -31,7 +31,7 @@ for episode in range(num_episodes):
         print(f'Episode number: {episode:0>4d}, reward: {episodic_reward}', end = '\r')
 
     history.append(episodic_reward)
-    if (episode % 1) == 0:
+    if (episode % 10) == 0:
         agent.saveModel(episode)
     print(f'Episode number:", {episode:0>4d}, reward: {episodic_reward}')
 

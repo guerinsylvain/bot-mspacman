@@ -19,7 +19,6 @@ class Environment(IEnvironment):
         img = Image.fromarray(observation)
         img = img.convert('L')
         img = img.crop((0, 1, 160, 172))
-        img.save('snapshot.jpg')
         img = img.resize((80, 85), resample=ANTIALIAS)
         img = np.array(img) / 255
         img = np.expand_dims(img, axis = 2)
