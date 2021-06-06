@@ -1,4 +1,5 @@
 from agent_random import AgentRandom
+from agent_deep_q_learning_cnn import AgentDeepQLearningCNN
 from environment import Environment
 
 # parameters
@@ -8,7 +9,8 @@ num_episodes = 10
 # inits
 env = Environment()
 history = []
-agent = AgentRandom(env.num_actions)
+# agent = AgentRandom(env.num_actions)
+agent = AgentDeepQLearningCNN(env.num_actions)
 
 # training
 for i in range(num_episodes):
@@ -21,7 +23,7 @@ for i in range(num_episodes):
 
         action = agent.choose_action(obs)
         next_obs, reward, done = env.step(action)
-        agent.gather_experience(obs, action, reward, next_obs)
+        agent.gather_experience(obs, action, reward, next_obs, done)
         agent.learn()
 
         episodic_reward += reward

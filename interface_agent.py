@@ -7,7 +7,7 @@ class IAgent(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def gather_experience(self, prev_observation, action, reward, new_observation):
+    def gather_experience(self, intial_obs, action, reward, next_obs, done):
         pass
 
     @abc.abstractmethod
