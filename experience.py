@@ -1,6 +1,6 @@
 class Experience:
     def __init__(self, intial_obs, action, reward, next_obs, done):
-        self.intial_obs = intial_obs
+        self.initial_obs = intial_obs
         self.action = action
         self.reward = reward
         self.next_obs = next_obs

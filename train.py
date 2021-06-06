@@ -13,7 +13,7 @@ history = []
 agent = AgentDeepQLearningCNN(env.obs_size, env.num_actions)
 
 # training
-for i in range(num_episodes):
+for episode in range(num_episodes):
     done = False
     episodic_reward = 0
     obs = env.reset()
@@ -28,8 +28,11 @@ for i in range(num_episodes):
 
         episodic_reward += reward
         obs = next_obs
+        print(f'Episode number: {episode:0>4d}, reward: {episodic_reward}', end = '\r')
 
     history.append(episodic_reward)
-    print("Episode number:", i, 'Episode Reward:', episodic_reward)
+    if (episode % 1) == 0:
+        agent.saveModel(episode)
+    print(f'Episode number:", {episode:0>4d}, reward: {episodic_reward}')
 
 env.close()
