@@ -5,7 +5,7 @@ Trying to build the best bot to play miss pacman on atari 2600.
 [Results](#results)  
 [Setup](#setup)  
 &nbsp;&nbsp;&nbsp;[Get the sources](#get-sources)  
-&nbsp;&nbsp;&nbsp;[Install and configure Python](#setup-python)
+&nbsp;&nbsp;&nbsp;[Install and configure Python](#setup-python)  
 &nbsp;&nbsp;&nbsp;[Install atari_py roms](#setup-atari-py-roms)
 
 <a id="results"></a>

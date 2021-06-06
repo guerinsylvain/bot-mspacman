@@ -1,5 +1,5 @@
-import gym
 from agent_random import AgentRandom
+from environment import Environment
 import numpy as np
 
 # parameters
@@ -7,10 +7,10 @@ render_env = False
 num_episodes = 50
 
 # inits
-env = gym.make('MsPacman-v0')
+env = Environment()
 print("actions [0-8]:", env.env.get_action_meanings())
 history = []
-agent = AgentRandom(env.action_space.n)
+agent = AgentRandom(env.num_actions)
 
 # training
 for i in range(num_episodes):

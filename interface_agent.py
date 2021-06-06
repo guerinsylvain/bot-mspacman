@@ -1,5 +1,4 @@
 import abc
-import numpy as np
 
 
 class IAgent(metaclass=abc.ABCMeta):
