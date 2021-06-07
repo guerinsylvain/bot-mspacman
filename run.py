@@ -4,7 +4,7 @@ from environment import Environment
 import numpy as np
 
 # parameters
-render_env = False
+render_env = True
 num_episodes = 50
 
 # inits
@@ -12,7 +12,7 @@ env = Environment()
 history = []
 # agent = AgentRandom(env.num_actions)
 agent = AgentDoubleDeepQLearningCNN(env.obs_size, env.num_actions)
-agent.loadModel('policy_network_model_1330.h5')
+agent.loadModel('policy_network_model_230.h5')
 
 # training
 for i in range(num_episodes):
@@ -23,10 +23,11 @@ for i in range(num_episodes):
         if render_env:
             env.render()
 
-        action = agent.choose_action(obs)
+        action = agent.choose_action(obs, explore=False)
         next_obs, reward, done = env.step(action)
         episodic_reward += reward
         obs = next_obs
+        print(f'Episode number: {i:0>4d}, reward: {episodic_reward}', end = '\r')
 
     history.append(episodic_reward)
     print("Episode number:", i, 'Episode Reward:', episodic_reward)
