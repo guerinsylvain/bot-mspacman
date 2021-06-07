@@ -19,3 +19,7 @@ class AgentRandom(IAgent):
 
     def saveModel(self, num_episodes):
         pass
+
+    @property
+    def exploration_rate(self):
+        pass

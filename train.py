@@ -33,11 +33,11 @@ for episode in range(num_episodes):
         episodic_reward += reward
         global_steps += 1
         obs = next_obs
-        print(f'Episode number: {episode:0>4d}, steps: {global_steps:0>4d}, reward: {episodic_reward}', end = '\r')
+        print(f'Episode number: {episode:0>4d}, steps: {global_steps:0>4d}, exploration rate: {agent.exploration_rate:.2f}, reward: {episodic_reward}', end = '\r')
 
     history.append(episodic_reward)
     if (episode % 10) == 0:
         agent.saveModel(episode)
-    print(f'Episode number:", {episode:0>4d}, steps: {global_steps:0>4d}, reward: {episodic_reward}')
+    print(f'Episode number:", {episode:0>4d}, steps: {global_steps:0>4d}, exploration rate: {agent.exploration_rate:.2f}, reward: {episodic_reward}')
 
 env.close()

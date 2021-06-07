@@ -17,10 +17,12 @@ class IEnvironment(metaclass=abc.ABCMeta):
     def step(self, action):
         pass
 
+    @abc.abstractproperty
     @property
     def num_actions(self):
         pass
 
+    @abc.abstractproperty
     @property
     def obs_size(self):
         pass

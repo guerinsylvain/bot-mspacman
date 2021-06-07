@@ -20,6 +20,10 @@ class AgentDoubleDeepQLearningCNN(IAgent):
         self._target_network_update_rate = 5
         self._sample_size = sample_size
 
+    @property
+    def exploration_rate(self):
+        return self._epsilon
+
     def choose_action(self, observation, explore=True):
         if explore and np.random.rand() <= self._epsilon:
             return np.random.choice(range(self._num_actions))

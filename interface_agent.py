@@ -20,3 +20,8 @@ class IAgent(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def saveModel(self, num_episodes):
         pass
+    
+    @abc.abstractproperty
+    @property
+    def exploration_rate(self):
+        pass
