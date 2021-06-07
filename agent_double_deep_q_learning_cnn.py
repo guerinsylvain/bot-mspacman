@@ -4,7 +4,7 @@ import numpy as np
 from replay_memory import ReplayMemory
 
 class AgentDoubleDeepQLearningCNN(IAgent):
-    def __init__(self, obs_size, num_actions, epsilon=1, epsilon_decay=0.996, epsilon_min=1, sample_size = 200, num_epochs = 1, gamma = 0.95):
+    def __init__(self, obs_size, num_actions, epsilon=1.0, epsilon_decay=0.998, epsilon_min=0.01, sample_size = 200, num_epochs = 1, gamma = 0.95):
         self._epsilon = epsilon  # exploration rate
         self._epsilon_decay = epsilon_decay
         self._epsilon_min = epsilon_min
@@ -28,7 +28,7 @@ class AgentDoubleDeepQLearningCNN(IAgent):
         if explore and np.random.rand() <= self._epsilon:
             return np.random.choice(range(self._num_actions))
         else:
-            q_compute = self.policy_network.compute([observation],
+            q_compute = self._policy_network.compute(np.asarray([observation]),
                                                     batch_size=1)
             return np.argmax(q_compute[0])
 
