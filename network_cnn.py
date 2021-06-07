@@ -18,10 +18,10 @@ class NetworkCNN:
 
     def build_model(self):
         model = tf.keras.models.Sequential([
-            tf.keras.layers.Conv2D(32, (8,8), activation='relu', input_shape=self._obs_size),
+            tf.keras.layers.Conv2D(32, (8,8), strides=2, activation='relu', input_shape=self._obs_size),
             tf.keras.layers.MaxPooling2D(2,2),
             tf.keras.layers.Conv2D(64, (4,4), activation='relu'),
-            tf.keras.layers.MaxPooling2D(2,2),
+            #tf.keras.layers.MaxPooling2D(2,2),
             tf.keras.layers.Conv2D(64, (3,3), activation='relu'),
             tf.keras.layers.MaxPooling2D(2,2),
             # Flatten the results to feed into a DNN
@@ -31,7 +31,7 @@ class NetworkCNN:
             tf.keras.layers.Dense(self._n_out, activation='relu')
         ])
 
-        model.compile(Adam(lr=.0001), loss='mse', metrics=['accuracy'])
+        model.compile(Adam(lr=.001), loss='mse', metrics=['accuracy'])
         print(model.summary())
         return model
 

@@ -3,7 +3,7 @@ from network_cnn import NetworkCNN
 import numpy as np
 from replay_memory import ReplayMemory
 
-class AgentDeepQLearningCNN(IAgent):
+class AgentDoubleDeepQLearningCNN(IAgent):
     def __init__(self, obs_size, num_actions, epsilon=1, epsilon_decay=0.996, epsilon_min=1, sample_size = 200, num_epochs = 1, gamma = 0.95):
         self._epsilon = epsilon  # exploration rate
         self._epsilon_decay = epsilon_decay
@@ -55,10 +55,10 @@ class AgentDeepQLearningCNN(IAgent):
         batch_size = len(batch)        
         
         initial_obs = np.asarray([exp.initial_obs for exp in batch])
-        current_q_values = np.asarray(self._policy_network.compute(initial_obs, batch_size = batch_size))
+        q_values = np.asarray(self._policy_network.compute(initial_obs, batch_size = batch_size))
 
         next_obs = np.asarray([exp.next_obs for exp in batch])
-        next_q_values = np.array(self._target_network.compute(next_obs, batch_size = batch_size))
+        target_q_values = np.array(self._target_network.compute(next_obs, batch_size = batch_size))
 
         x_batch = np.zeros([np.shape(batch)[0], self._obs_size[0], self._obs_size[1], self._obs_size[2]]).astype(np.float32)
         y_batch = np.zeros([np.shape(batch)[0], self._num_actions]).astype(np.float32)
@@ -70,9 +70,9 @@ class AgentDeepQLearningCNN(IAgent):
                     if batch[i].done:
                         y_batch[i,j] = batch[i].reward
                     else:
-                        y_batch[i,j] = batch[i].reward + self._gamma * np.max(next_q_values[i])
+                        y_batch[i,j] = batch[i].reward + self._gamma * np.max(target_q_values[i])
                 else:
-                    y_batch[i,j] = current_q_values[i,j] 
+                    y_batch[i,j] = q_values[i,j] 
 
         history = self._policy_network.train(train_samples=x_batch, 
                                             train_labels=y_batch, 
