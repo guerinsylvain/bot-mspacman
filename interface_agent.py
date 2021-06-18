@@ -1,25 +1,27 @@
-from interface_agent import IAgent
-import numpy as np
+import abc
 
-class AgentRandom(IAgent):
-    def __init__(self, num_actions):
-        self._num_actions = num_actions
-
+class IAgent(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
     def choose_action(self, observation, explore=True):
-        return np.random.choice(range(self._num_actions))
+        pass
 
+    @abc.abstractmethod
     def gather_experience(self, intial_obs, action, reward, next_obs, done):
         pass
 
+    @abc.abstractmethod
     def learn(self):
         pass
 
+    @abc.abstractmethod
     def loadModel(self, file_name):
         pass
 
+    @abc.abstractmethod
     def saveModel(self, num_episodes):
         pass
-
+    
+    @abc.abstractproperty
     @property
     def exploration_rate(self):
         pass

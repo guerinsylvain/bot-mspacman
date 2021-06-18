@@ -1,16 +1,18 @@
-import gym
 from agent_random import AgentRandom
+from agent_double_deep_q_learning_cnn import AgentDoubleDeepQLearningCNN
+from environment import Environment
 import numpy as np
 
 # parameters
-render_env = False
+render_env = True
 num_episodes = 50
 
 # inits
-env = gym.make('MsPacman-v0')
-print("actions [0-8]:", env.env.get_action_meanings())
+env = Environment()
 history = []
-agent = AgentRandom(env.action_space.n)
+# agent = AgentRandom(env.num_actions)
+agent = AgentDoubleDeepQLearningCNN(env.obs_size, env.num_actions)
+agent.loadModel('policy_network_model_230.h5')
 
 # training
 for i in range(num_episodes):
@@ -21,10 +23,11 @@ for i in range(num_episodes):
         if render_env:
             env.render()
 
-        action = agent.choose_action(obs)
-        next_obs, reward, done, _ = env.step(action)
+        action = agent.choose_action(obs, explore=False)
+        next_obs, reward, done = env.step(action)
         episodic_reward += reward
         obs = next_obs
+        print(f'Episode number: {i:0>4d}, reward: {episodic_reward}', end = '\r')
 
     history.append(episodic_reward)
     print("Episode number:", i, 'Episode Reward:', episodic_reward)
