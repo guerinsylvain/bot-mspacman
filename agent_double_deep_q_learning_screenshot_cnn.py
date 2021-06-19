@@ -4,11 +4,11 @@ import numpy as np
 from replay_memory import ReplayMemory
 
 class AgentDoubleDeepQLearningCNN(IAgent):
-    def __init__(self, obs_size, num_actions, epsilon=1.0, epsilon_decay=0.998, epsilon_min=0.01, sample_size = 200, num_epochs = 1, gamma = 0.95):
+    def __init__(self, obs_size, num_actions, epsilon=1.0, epsilon_decay=0.998, epsilon_min=0.01, sample_size = 200, num_epochs = 1, discount_rate = 0.95):
         self._epsilon = epsilon  # exploration rate
         self._epsilon_decay = epsilon_decay
         self._epsilon_min = epsilon_min
-        self._gamma = gamma #discount rate
+        self._discount_rate = discount_rate
         self._obs_size = obs_size
         self._learn_count = 0
         self._num_actions = num_actions
@@ -74,7 +74,7 @@ class AgentDoubleDeepQLearningCNN(IAgent):
                     if batch[i].done:
                         y_batch[i,j] = batch[i].reward
                     else:
-                        y_batch[i,j] = batch[i].reward + self._gamma * np.max(target_q_values[i])
+                        y_batch[i,j] = batch[i].reward + self._discount_rate * np.max(target_q_values[i])
                 else:
                     y_batch[i,j] = q_values[i,j] 
 

@@ -5,16 +5,19 @@ from PIL import Image
 from PIL.Image import ANTIALIAS
 
 class Environment(IEnvironment):
-    def __init__(self):
+    def __init__(self, frameskip, render):
         self._env = gym.make('MsPacman-v0')
+        self._env.frameskip = frameskip
+        self._env.env.frameskip = frameskip
         self._obs_size = (85, 80, 1) 
+        self._render = render
         print("actions [0-8]:", self._env.env.get_action_meanings())
 
     def close(self):
         return self._env.close()
 
     def process_image(self, observation):
-        # transform (210, 160, 3) RGB pic into (85,80, 1) grayscaled pic
+        # transform (210, 160, 3)  RGB pic into (85,80, 1) grayscaled pic
         # the unusefull bottom part of the pic is removed
         img = Image.fromarray(observation)
         img = img.convert('L')
@@ -25,7 +28,8 @@ class Environment(IEnvironment):
         return np.array(img)
 
     def render(self):
-        return self._env.render()
+        if self._render:
+            self._env.render()
 
     def reset(self):
         obs = self._env.reset()

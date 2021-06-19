@@ -1,19 +1,26 @@
 from agent_random import AgentRandom
-from agent_double_deep_q_learning_cnn import AgentDoubleDeepQLearningCNN
+from agent_double_deep_q_learning_screenshot_cnn import AgentDoubleDeepQLearningCNN
 from environment import Environment
 
 # parameters
-render_env = False
+env_render = False
+env_frameskip = 20
+agent_epsilon=1.0
+agent_epsilon_decay=0.998
+agent_epsilon_min=0.01
+agent_sample_size = 200
+agent_num_epochs = 1
+agent_discount_rate = 0.95
 num_episodes = 15000
 global_steps = 0
 start_steps = 1000
-steps_train = 4
+steps_train = 5
 
 # inits
-env = Environment()
+env = Environment(env_frameskip, env_render)
 history = []
 # agent = AgentRandom(env.num_actions)
-agent = AgentDoubleDeepQLearningCNN(env.obs_size, env.num_actions)
+agent = AgentDoubleDeepQLearningCNN(env.obs_size, env.num_actions, epsilon=agent_epsilon, epsilon_decay=agent_epsilon_decay, epsilon_min=agent_epsilon_min, sample_size = agent_sample_size, num_epochs = agent_num_epochs, discount_rate = agent_discount_rate)
 
 # training
 for episode in range(num_episodes):
@@ -21,9 +28,7 @@ for episode in range(num_episodes):
     episodic_reward = 0
     obs = env.reset()
     while not done:
-        if render_env:
-            env.render()
-
+        env.render()
         action = agent.choose_action(obs)
         next_obs, reward, done = env.step(action)
         agent.gather_experience(obs, action, reward, next_obs, done)

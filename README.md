@@ -2,6 +2,7 @@
 
 Trying to build the best bot to play miss pacman on atari 2600.
 
+[Environment](#environment)
 [Results](#results)  
 [Setup](#setup)  
 &nbsp;&nbsp;&nbsp;[Get the sources](#get-sources)  
@@ -10,14 +11,22 @@ Trying to build the best bot to play miss pacman on atari 2600.
 &nbsp;&nbsp;&nbsp;[Install and configure Python](#setup-python)  
 &nbsp;&nbsp;&nbsp;[Install atari_py roms](#setup-atari-py-roms)
 
+<a id="environment"></a>
+
+## Environment
+
+Atari 2600 MsPacman.  
+Emulated through [gym openai](https://gym.openai.com/envs/MsPacman-v0/).  
+The game should run at 60fps.
+
 <a id="results"></a>
 
 ## Results
 
-| Methods       | Average Score (50 episodes) |
-| ------------- | --------------------------- |
-| Random policy | 218                         |
-| ...           | ...                         |
+| Methods       | Average Score (100 episodes) | Parameters     |
+| ------------- | ---------------------------- | -------------- |
+| Random policy | 545                          | frameskip = 20 |
+| ...           | ...                          | ...            |
 
 <a id="setup"></a>
 
