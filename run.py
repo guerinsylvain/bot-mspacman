@@ -6,7 +6,7 @@ import numpy as np
 # parameters
 env_render = False
 env_frameskip = 20
-agent_epsilon=1.0
+agent_epsilon=0.01
 agent_epsilon_decay=0.998
 agent_epsilon_min=0.01
 agent_sample_size = 200
@@ -19,7 +19,7 @@ env = Environment(env_frameskip, env_render)
 history = []
 agent = AgentRandom(env.num_actions)
 agent = AgentDoubleDeepQLearningCNN(env.obs_size, env.num_actions, epsilon=agent_epsilon, epsilon_decay=agent_epsilon_decay, epsilon_min=agent_epsilon_min, sample_size = agent_sample_size, num_epochs = agent_num_epochs, discount_rate = agent_discount_rate)
-agent.loadModel('policy_network_model_230.h5')
+agent.loadModel('policy_network_model_3540.h5')
 
 # training
 for i in range(num_episodes):

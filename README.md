@@ -17,16 +17,17 @@ Trying to build the best bot to play miss pacman on atari 2600.
 
 Atari 2600 MsPacman.  
 Emulated through [gym openai](https://gym.openai.com/envs/MsPacman-v0/).  
-The game should run at 60fps.
+The game runs at 60fps.  
+Possible actions: ['NOOP', 'UP', 'RIGHT', 'LEFT', 'DOWN', 'UPRIGHT', 'UPLEFT', 'DOWNRIGHT', 'DOWNLEFT']
 
 <a id="results"></a>
 
 ## Results
 
-| Methods       | Average Score (100 episodes) | Parameters     |
-| ------------- | ---------------------------- | -------------- |
-| Random policy | 545                          | frameskip = 20 |
-| ...           | ...                          | ...            |
+| Methods                                                                                     | Average Score (100 episodes) | Parameters                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Random policy                                                                               | 545                          | frameskip=20                                                                                                                                                                          |
+| double deep q learning convolution neural network with last screenshot observation as input | 2875                         | episodes=3540, frameskip=20, epsilon=1.0, epsilon_decay=0.998, epsilon_min=0.01, sample_size=200, num_epochs=1, discount_rate=0.95, adam optimizer, learning rate = 0.001, huber loss |
 
 <a id="setup"></a>
 

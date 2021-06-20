@@ -43,6 +43,7 @@ class Environment(IEnvironment):
 
     @property
     def num_actions(self):
+        # ['NOOP', 'UP', 'RIGHT', 'LEFT', 'DOWN', 'UPRIGHT', 'UPLEFT', 'DOWNRIGHT', 'DOWNLEFT']
         return self._env.action_space.n
 
     @property
