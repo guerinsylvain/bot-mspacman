@@ -1,5 +1,5 @@
-from interface_agent import IAgent
-from network_cnn import NetworkCNN
+from agent_interface import IAgent
+from network_cnn_screenshot import NetworkCNNScreenshot
 import numpy as np
 from replay_memory import ReplayMemory
 
@@ -14,8 +14,8 @@ class AgentDoubleDeepQLearningCNN(IAgent):
         self._num_actions = num_actions
         self._num_epochs = num_epochs
         self._replay_memory = ReplayMemory(capacity=50000)
-        self._policy_network = NetworkCNN(obs_size, num_actions)
-        self._target_network = NetworkCNN(obs_size, num_actions)
+        self._policy_network = NetworkCNNScreenshot(obs_size, num_actions)
+        self._target_network = NetworkCNNScreenshot(obs_size, num_actions)
         self._target_network.weights = self._policy_network.weights
         self._target_network_update_rate = 5
         self._sample_size = sample_size

@@ -1,5 +1,5 @@
 import gym
-from interface_environment import IEnvironment
+from environment_interface import IEnvironment
 import numpy as np
 from PIL import Image
 from PIL.Image import ANTIALIAS

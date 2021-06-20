@@ -1,4 +1,4 @@
-from interface_agent import IAgent
+from agent_interface import IAgent
 import numpy as np
 
 class AgentRandom(IAgent):

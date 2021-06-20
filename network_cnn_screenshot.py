@@ -2,7 +2,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.optimizers import Adam
 
-class NetworkCNN:
+class NetworkCNNScreenshot:
     def __init__(self, obs_size, n_out):
         self._obs_size = obs_size
         self._n_out = n_out
