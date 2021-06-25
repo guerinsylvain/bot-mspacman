@@ -30,7 +30,7 @@ for episode in range(num_episodes):
     while not done:
         env.render()
         action = agent.choose_action(obs)
-        next_obs, reward, done = env.step(action)
+        next_obs, reward, done, score = env.step(action)
         agent.gather_experience(obs, action, reward, next_obs, done)
         if done or (global_steps % steps_train == 0 and global_steps > start_steps):
             agent.learn()
@@ -38,11 +38,11 @@ for episode in range(num_episodes):
         episodic_reward += reward
         global_steps += 1
         obs = next_obs
-        print(f'Episode number: {episode:0>4d}, steps: {global_steps:0>4d}, exploration rate: {agent.exploration_rate:.2f}, reward: {episodic_reward}', end = '\r')
+        print(f'Episode number: {episode:0>4d}, steps: {global_steps:0>4d}, exploration rate: {agent.exploration_rate:.2f}, reward: {episodic_reward:5.0f}, score: {score:5.0f}', end = '\r')
 
     history.append(episodic_reward)
     if (episode % 10) == 0:
         agent.saveModel(episode)
-    print(f'Episode number:", {episode:0>4d}, steps: {global_steps:0>4d}, exploration rate: {agent.exploration_rate:.2f}, reward: {episodic_reward}')
+    print(f'Episode number:", {episode:0>4d}, steps: {global_steps:0>4d}, exploration rate: {agent.exploration_rate:.2f}, reward: {episodic_reward:5.0f}, score: {score:5.0f}')
 
 env.close()

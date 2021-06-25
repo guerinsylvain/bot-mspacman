@@ -11,6 +11,8 @@ class Environment(IEnvironment):
         self._env.env.frameskip = frameskip
         self._obs_size = (85, 80, 1) 
         self._render = render
+        self._lives = 3
+        self._score = 0
         print("actions [0-8]:", self._env.env.get_action_meanings())
 
     def close(self):
@@ -34,12 +36,19 @@ class Environment(IEnvironment):
     def reset(self):
         obs = self._env.reset()
         processed_obs = self.process_image(obs)
+        self._lives = 3
+        self._score = 0
         return processed_obs
 
     def step(self, action):
-        next_obs, reward, done, _ = self._env.step(action)
+        next_obs, reward, done, info = self._env.step(action)
+        self._score = self._score + reward
+        lives = info["ale.lives"]
+        if lives < self._lives:
+            reward = reward - 500
+        self._lives = lives
         processed_next_obs = self.process_image(next_obs)
-        return processed_next_obs, reward, done
+        return processed_next_obs, reward, done, self._score
 
     @property
     def num_actions(self):

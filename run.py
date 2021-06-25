@@ -6,9 +6,9 @@ import numpy as np
 # parameters
 env_render = False
 env_frameskip = 20
-agent_epsilon=0.01
+agent_epsilon=0
 agent_epsilon_decay=0.998
-agent_epsilon_min=0.01
+agent_epsilon_min=0
 agent_sample_size = 200
 agent_num_epochs = 1
 agent_discount_rate = 0.95
@@ -19,7 +19,7 @@ env = Environment(env_frameskip, env_render)
 history = []
 agent = AgentRandom(env.num_actions)
 agent = AgentDoubleDeepQLearningCNN(env.obs_size, env.num_actions, epsilon=agent_epsilon, epsilon_decay=agent_epsilon_decay, epsilon_min=agent_epsilon_min, sample_size = agent_sample_size, num_epochs = agent_num_epochs, discount_rate = agent_discount_rate)
-agent.loadModel('network_cnn_screenshot_3540.h5')
+agent.loadModel('policy_network_model_3600.h5')
 
 # training
 for i in range(num_episodes):
@@ -29,13 +29,13 @@ for i in range(num_episodes):
     while not done:
         env.render()
         action = agent.choose_action(obs, explore=False)
-        next_obs, reward, done = env.step(action)
+        next_obs, reward, done, score = env.step(action)
         episodic_reward += reward
         obs = next_obs
-        print(f'Episode number: {i:0>4d}, reward: {episodic_reward}', end = '\r')
+        print(f'Episode number: {i:0>4d}, reward: {episodic_reward}, score: {score:5.0f}', end = '\r')
 
     history.append(episodic_reward)
-    print("Episode number:", i, 'Episode Reward:', episodic_reward)
+    print(f'Episode number: {i:0>4d}, reward: {episodic_reward}, score: {score:5.0f}')
 
 print(np.mean(history))
 env.close()

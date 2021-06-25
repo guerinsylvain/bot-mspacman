@@ -27,7 +27,7 @@ Possible actions: ['NOOP', 'UP', 'RIGHT', 'LEFT', 'DOWN', 'UPRIGHT', 'UPLEFT', '
 | Methods                                                                                     | Average Score (100 episodes) | Parameters                                                                                                                                                                            |
 | ------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Random policy                                                                               | 545                          | frameskip=20                                                                                                                                                                          |
-| double deep q learning convolution neural network with last screenshot observation as input | 2875                         | episodes=3540, frameskip=20, epsilon=1.0, epsilon_decay=0.998, epsilon_min=0.01, sample_size=200, num_epochs=1, discount_rate=0.95, adam optimizer, learning rate = 0.001, huber loss |
+| double deep q learning convolution neural network with last screenshot observation as input | 3378                         | episodes=3600, frameskip=20, epsilon=1.0, epsilon_decay=0.998, epsilon_min=0.01, sample_size=200, num_epochs=1, discount_rate=0.95, adam optimizer, learning rate = 0.001, huber loss |
 
 <a id="setup"></a>
 
