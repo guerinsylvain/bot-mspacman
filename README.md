@@ -6,8 +6,8 @@ Trying to build the best bot to play miss pacman on atari 2600.
 [Results](#results)  
 [Setup](#setup)  
 &nbsp;&nbsp;&nbsp;[Get the sources](#get-sources)  
-&nbsp;&nbsp;&nbsp;[Install the CUDA Toolkit 10.1](#setup-cudatoolkit)  
-&nbsp;&nbsp;&nbsp;[Install the NVIDIA CUDA Deep Neural Network library (cuDNN v7.6.5 (November 5th, 2019), for CUDA 10.1)](#setup-cudnn)  
+&nbsp;&nbsp;&nbsp;[Install the CUDA Toolkit 11.2](#setup-cudatoolkit)  
+&nbsp;&nbsp;&nbsp;[Install the NVIDIA CUDA Deep Neural Network library (cuDNN v8.1.1 (Feburary 26th, 2021), for CUDA 11.0,11.1 and 11.2)](#setup-cudnn)  
 &nbsp;&nbsp;&nbsp;[Install and configure Python](#setup-python)  
 &nbsp;&nbsp;&nbsp;[Install atari_py roms](#setup-atari-py-roms)
 
@@ -44,16 +44,16 @@ You may
 
 <a id="setup-cudatoolkit"></a>
 
-### Install the CUDA Toolkit 10.1
+### Install the CUDA Toolkit 11.2
 
-1. Please install from the following [link](https://developer.nvidia.com/cuda-10.1-download-archive-update2)  
+1. Please install from the following [link](https://developer.nvidia.com/cuda-11.2.2-download-archive)  
    Note that you can uncheck "Install Visual Studio Extensions" in the options.
    <a id="setup-cudnn"></a>
 
-### Install the [NVIDIA CUDA Deep Neural Network library (cuDNN v7.6.5 (November 5th, 2019), for CUDA 10.1)](https://developer.nvidia.com/cudnn)
+### Install the [NVIDIA CUDA Deep Neural Network library (cuDNN cuDNN v8.1.1 (Feburary 26th, 2021), for CUDA 11.0,11.1 and 11.2)](https://developer.nvidia.com/cudnn)
 
 1. Follow the instructions detailed [here](https://docs.nvidia.com/deeplearning/sdk/cudnn-install/)  
-   Make sure to install the version v7.6.5 (November 5th, 2019), for CUDA 10.1
+   Make sure to install the version cuDNN v8.1.1 (Feburary 26th, 2021), for CUDA 11.0,11.1 and 11.2
 
 <a id="setup-python"></a>
 
